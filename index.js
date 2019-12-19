@@ -54,7 +54,7 @@ class Person {
   }
 
   poop() {
-    this.stomach = [];
+    return this.stomach = [];
   }
 
   toString() {
@@ -85,7 +85,20 @@ class Car {
     this.odometer = 0;
   }
 
-  
+  fill(gallons) {
+    this.tank = this.tank + gallons;
+  }
+
+  drive(distance) {
+    if(distance / this.milesPerGallon > this.tank) {
+      this.odometer = this.tank * this.milesPerGallon;
+      this.tank = 0;
+      return `I ran out of fuel at ${this.odometer} miles!`;
+    } else {
+      this.odometer += distance;
+      this.tank -= distance / this.milesPerGallon;
+    }
+  }
 }
 
 /*
